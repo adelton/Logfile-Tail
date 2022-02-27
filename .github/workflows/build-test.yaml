@@ -14,11 +14,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ fedora-latest, centos-8, centos-7 ]
+        os:
+          - 'registry.fedoraproject.org/fedora:latest'
+          - 'quay.io/centos/centos:stream8'
+          - 'registry.centos.org/centos:7'
     steps:
       - uses: actions/checkout@v2
       - name: Set the right OS in the Dockerfile
-        run: sed "s#^FROM.*#FROM $( echo ${{ matrix.os }} | sed 's#^fedora-#registry.fedoraproject.org/fedora:#; s#^centos-#registry.centos.org/centos:#;' )#" ci/Dockerfile
+        run: sed "s#^FROM.*#FROM ${{ matrix.os }}#" ci/Dockerfile
       - name: Build image
         run: docker build -t logfile-tail -f ci/Dockerfile .
       - name: Run the tests with installed module
