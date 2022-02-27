@@ -43,3 +43,13 @@ jobs:
       - run: sudo make install
       - name: Run the tests with installed module
         run: LOGFILE_TAIL_SCRIPT=/usr/local/bin/logfile-tail make test
+  readme:
+    name: Check the README
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt install -y perl-doc libpod-markdown-perl
+      - run: perl Makefile.PL
+      - run: mv README.md README.md.orig
+      - run: make README.md
+      - run: diff -u README.md.orig README.md
