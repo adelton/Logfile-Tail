@@ -16,6 +16,7 @@ jobs:
       matrix:
         os:
           - 'registry.fedoraproject.org/fedora:latest'
+          - 'quay.io/centos/centos:stream9'
           - 'quay.io/centos/centos:stream8'
           - 'registry.centos.org/centos:7'
     steps:
