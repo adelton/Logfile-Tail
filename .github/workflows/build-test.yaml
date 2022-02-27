@@ -27,3 +27,19 @@ jobs:
         run: docker build -t logfile-tail -f ci/Dockerfile .
       - name: Run the tests with installed module
         run: docker run -e LOGFILE_TAIL_SCRIPT=/usr/bin/logfile-tail --rm logfile-tail t/test.sh
+  native:
+    name: Run tests on native Ubuntus
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-20.04
+          - ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: perl Makefile.PL
+      - run: make
+      - run: sudo make install
+      - name: Run the tests with installed module
+        run: LOGFILE_TAIL_SCRIPT=/usr/local/bin/logfile-tail make test
