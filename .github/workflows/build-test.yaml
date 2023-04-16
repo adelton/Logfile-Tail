@@ -20,7 +20,7 @@ jobs:
           - 'quay.io/centos/centos:stream8'
           - 'registry.centos.org/centos:7'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set the right OS in the Dockerfile
         run: sed "s#^FROM.*#FROM ${{ matrix.os }}#" ci/Dockerfile
       - name: Build image
@@ -37,7 +37,7 @@ jobs:
           - ubuntu-22.04
           - ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: perl Makefile.PL
       - run: make
       - run: sudo make install
@@ -47,7 +47,7 @@ jobs:
     name: Check the README
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: sudo apt install -y perl-doc libpod-markdown-perl
       - run: perl Makefile.PL
       - run: mv README.md README.md.orig
