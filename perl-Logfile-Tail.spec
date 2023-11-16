@@ -9,7 +9,9 @@ Source0:        http://www.adelton.com/perl/Logfile-Tail/Logfile-Tail-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  make
+%if 0%{?rhel} > 7 || 0%{?rhel} == 0
 BuildRequires:  perl-generators
+%endif
 BuildRequires:  perl-interpreter
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(ExtUtils::MakeMaker)
