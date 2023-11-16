@@ -368,6 +368,8 @@ sub _getline {
 				# next one
 				my ($newer_fh, $newer_archive) = $self->_get_archive(*$self->{archive}, 'newer');
 				if (not defined $newer_fh) {
+					# clear the EOF flag to allow for repeated read
+					$fh->seek(0, 1);
 					return;
 				}
 				*$self->{_fh}->close();
@@ -376,6 +378,9 @@ sub _getline {
 				*$self->{data_length} = 0;
 				*$self->{archive} = $newer_archive;
 				goto DO_GETLINE;
+			} else {
+				# clear the EOF flag to allow for repeated read
+				$fh->seek(0, 1);
 			}
 			return;
 		}
