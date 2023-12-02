@@ -48,6 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: sudo apt update
       - run: sudo apt install -y perl-doc libpod-markdown-perl
       - run: perl Makefile.PL
       - run: mv README.md README.md.orig
