@@ -1,5 +1,5 @@
 Name:           perl-Logfile-Tail
-Version:        0.8
+Version:        0.9
 Release:        1%{?dist}
 Summary:        Tail log files
 License:        GPLv2+ and Artistic 2.0
@@ -55,7 +55,7 @@ make test
 %{_mandir}/man3/*
 
 %changelog
-* Fri Aug 16 2024 Jan Pazdziora 0.8-1
+* Fri Aug 16 2024 Jan Pazdziora 0.9-1
 - Clear the EOF flag to allow for repeated read,
   fixing compatibility issue with latest perls.
 

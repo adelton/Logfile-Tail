@@ -126,7 +126,7 @@ Both .num and -date suffixed rotated files are supported.
 
 ### AUTHOR AND LICENSE
 
-Copyright (c) 2010--2012 Jan Pazdziora.
+Copyright (c) 2010--2024 Jan Pazdziora.
 
 Logfile::Tail is free software. You can redistribute it and/or modify
 it under the terms of either:
@@ -182,7 +182,7 @@ The content is printed to the standard output.
 
 ### AUTHOR
 
-Copyright (C) 2011--2012 by Jan Pazdziora
+Copyright (C) 2011--2024 by Jan Pazdziora
 
 ### LICENSE
 
