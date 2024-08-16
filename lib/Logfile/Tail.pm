@@ -231,7 +231,7 @@ sub _save_offset_to_status {
 	my $log_filename = *$self->{filename};
 	my $status_fh = *$self->{status_fh};
 	my $checksum = $self->_get_current_checksum();
-	$status_fh->seek(0, 0);
+	$status_fh->seek(0, 0) if defined $status_fh;
 	my $archive_text = defined *$self->{archive} ? " archive [@{[ *$self->{archive} ]}]" : '';
 	$status_fh->printflush("File [$log_filename]$archive_text offset [$offset] checksum [$checksum]\n");
 	$status_fh->truncate($status_fh->tell);
