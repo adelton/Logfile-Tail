@@ -16,8 +16,7 @@ jobs:
       matrix:
         os:
           - 'registry.fedoraproject.org/fedora:latest'
-          - 'quay.io/centos/centos:stream9'
-          - 'docker.io/almalinux:8'
+          - 'docker.io/almalinux:10'
     steps:
       - uses: actions/checkout@v6
       - name: Set the right OS in the Dockerfile
